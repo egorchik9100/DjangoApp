@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-<p>{{ menu }}</p>
-<p>{{ float }}</p>
-<p>{{ lst }}</p>
-<p>{{ set }}</p>
-<p>{{ dict.key_1 }}</p>
-<p>{{ obj.a }}</p>
+{% extends 'base.html' %}
+{% block content %}
 <h1>{{ title }}</h1>
-</body>
-</html>
+
+{% include 'women/includes/nav.html' %}
+
+
+<ul>
+    {% for p in posts %}
+    {% if p.is_published %}
+    <li>
+        <h2>{{ p.title }}</h2>
+        <p>{{ p.content }}</p>
+        <p><a href="{% url 'post' p.id %}">Читать пост</a></p>
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% include 'women/includes/nav.html' %}
+{% endblock %}

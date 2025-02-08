@@ -5,10 +5,10 @@ from women.views import page_not_found
 urlpatterns = [
     path('', views.index, name='home'),
     path('about/', views.about, name='about'),
-    path('cats/<int:cat_id>/', views.categories, name='cats_id'),
-    path('cats/<slug:cat_slug>/', views.categories_by_slug, name='cats'),
-    re_path(r"^archive/(?P<year>[0-9]{4})/", views.archive, name='archive'),
+    path('addpage/', views.addpage, name='add_page'),
+    path('contact/', views.contact, name='contact'),
+    path('login/', views.login, name='login'),
+    path('post/<int:post_id>/', views.show_post, name='post'),
 ]
-
 
 
